@@ -1,6 +1,9 @@
+// src/pages/Tickets.js
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Tickets.css"; // Se vuoi aggiungere stile, altrimenti puoi usare Home.css
 
-export default function Biglietti() {
+const Tickets = () => {
   // Stato per biglietti
   const [tipoBiglietto, setTipoBiglietto] = useState("giorno 1");
   const [quantitàBiglietto, setQuantitàBiglietto] = useState(1);
@@ -90,67 +93,92 @@ export default function Biglietti() {
   };
 
   return (
-    <div>
-      <h3>Scegli il biglietto</h3>
-      <div>
-        <button onClick={() => setTipoBiglietto("giorno 1")}>Giorno 1</button>
-        <button onClick={() => setTipoBiglietto("giorno 2")}>Giorno 2</button>
-        <button onClick={() => setTipoBiglietto("giorno 3")}>Giorno 3</button>
-        <button onClick={() => setTipoBiglietto("giorno 4")}>Giorno 4</button>
+    <div className="tickets-container">
+      <div className="overlay">
+        <nav className="navbar">
+          <ul className="nav-list">
+            <li><Link to="/chi-siamo">CHI SIAMO</Link></li>
+            <li><Link to="/eventi">EVENTI</Link></li>
+            <li><Link to="/festival">FESTIVAL</Link></li>
+            <li><Link to="/biglietti">BIGLIETTI</Link></li>
+            <li><Link to="/contatti">CONTATTI</Link></li>
+          </ul>
+        </nav>
+
+        <div className="hero-text">
+          <h1>Biglietti 🎟️</h1>
+          <h2>Acquista i tuoi biglietti per il Coming Of Age Film Festival</h2>
+
+          <section>
+            <h3>Scegli il biglietto</h3>
+            <div>
+              <button onClick={() => setTipoBiglietto("giorno 1")}>Giorno 1</button>
+              <button onClick={() => setTipoBiglietto("giorno 2")}>Giorno 2</button>
+              <button onClick={() => setTipoBiglietto("giorno 3")}>Giorno 3</button>
+              <button onClick={() => setTipoBiglietto("giorno 4")}>Giorno 4</button>
+            </div>
+
+            <div>
+              <label>Quantità biglietti:</label>
+              <input
+                type="number"
+                min="1"
+                value={quantitàBiglietto}
+                onChange={(e) => setQuantitàBiglietto(Number(e.target.value))}
+              />
+            </div>
+
+            <button onClick={aggiungiBigliettoAlCarrello}>Aggiungi biglietto al carrello</button>
+          </section>
+
+          <hr />
+
+          <section>
+            <h3>Scegli l'accredito</h3>
+            <div>
+              <button onClick={() => setTipoAccredito("Accredito 2 giornate")}>Accredito 2 giornate</button>
+              <button onClick={() => setTipoAccredito("Accredito 5 proiezioni")}>Accredito 5 proiezioni</button>
+              <button onClick={() => setTipoAccredito("Accredito 4 giornate")}>Accredito 4 giornate</button>
+              <button onClick={() => setTipoAccredito("Accredito 10 proiezioni")}>Accredito 10 proiezioni</button>
+            </div>
+
+            <div>
+              <label>Quantità accrediti:</label>
+              <input
+                type="number"
+                min="1"
+                value={quantitàAccredito}
+                onChange={(e) => setQuantitàAccredito(Number(e.target.value))}
+              />
+            </div>
+
+            <button onClick={aggiungiAccreditoAlCarrello}>Aggiungi accredito al carrello</button>
+          </section>
+
+          <hr />
+
+          <section>
+            <h4>Carrello</h4>
+            {carrello.length === 0 ? (
+              <p>Il carrello è vuoto</p>
+            ) : (
+              <ul>
+                {carrello.map((item) => (
+                  <li key={item.tipo}>
+                    {item.tipo} — {item.quantità} × €{item.prezzo} = €{item.quantità * item.prezzo}{" "}
+                    <button onClick={() => rimuoviDalCarrello(item.tipo)}>Rimuovi</button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <h4>Totale: €{totale}</h4>
+
+            <button onClick={procediAcquisto}>Procedi all'acquisto</button>
+          </section>
+        </div>
       </div>
-
-      <div>
-        <label>Quantità biglietti:</label>
-        <input
-          type="number"
-          min="1"
-          value={quantitàBiglietto}
-          onChange={(e) => setQuantitàBiglietto(Number(e.target.value))}
-        />
-      </div>
-
-      <button onClick={aggiungiBigliettoAlCarrello}>Aggiungi biglietto al carrello</button>
-
-      <hr />
-
-      <h3>Scegli l'accredito</h3>
-      <div>
-        <button onClick={() => setTipoAccredito("Accredito 2 giornate")}>Accredito 2 giornate</button>
-        <button onClick={() => setTipoAccredito("Accredito 5 proiezioni")}>Accredito 5 proiezioni</button>
-        <button onClick={() => setTipoAccredito("Accredito 4 giornate")}>Accredito 4 giornate</button>
-        <button onClick={() => setTipoAccredito("Accredito 10 proiezioni")}>Accredito 10 proiezioni</button>
-      </div>
-
-      <div>
-        <label>Quantità accrediti:</label>
-        <input
-          type="number"
-          min="1"
-          value={quantitàAccredito}
-          onChange={(e) => setQuantitàAccredito(Number(e.target.value))}
-        />
-      </div>
-
-      <button onClick={aggiungiAccreditoAlCarrello}>Aggiungi accredito al carrello</button>
-
-      <hr />
-
-      <h4>Carrello</h4>
-      {carrello.length === 0 ? (
-        <p>Il carrello è vuoto</p>
-      ) : (
-        <ul>
-          {carrello.map((item) => (
-            <li key={item.tipo}>
-              {item.tipo} — {item.quantità} × €{item.prezzo} = €{item.quantità * item.prezzo}{" "}
-              <button onClick={() => rimuoviDalCarrello(item.tipo)}>Rimuovi</button>
-            </li>
-          ))}
-        </ul>
-      )}
-      <h4>Totale: €{totale}</h4>
-
-      <button onClick={procediAcquisto}>Procedi all'acquisto</button>
     </div>
   );
-}
+};
+
+export default Tickets;
