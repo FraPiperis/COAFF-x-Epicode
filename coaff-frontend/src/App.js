@@ -1,18 +1,18 @@
-
-import './App.css';
-import Biglietti from "./Biglietti";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Tickets from "./pages/Tickets";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Acquista i tuoi biglietti</h1>
-      <Biglietti />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/biglietti" element={<Biglietti />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
+
 export default App;
-
-
-
-
-
