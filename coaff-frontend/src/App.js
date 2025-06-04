@@ -1,25 +1,24 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Tickets from './pages/Tickets';
-
-// Se avevi altre importazioni qui, mantienile.
+import ChiSiamo from './pages/ChiSiamo';
+import Eventi from './pages/Eventi';
+import Festival from './pages/Festival';
+import Biglietti from './pages/Tickets';
+import Contatti from './pages/Contatti';
 
 const App = () => {
   return (
     <Router>
-      {/* Navbar semplice */}
-      <nav style={{ padding: '10px', background: '#eee' }}>
-        <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
-        <Link to="/tickets">Tickets</Link>
-      </nav>
-
-      {/* Qui gestiamo il routing delle pagine */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tickets" element={<Tickets />} />
-        {/* Se hai altre rotte, aggiungile qui */}
+        <Route path="/ChiSiamo" element={<ChiSiamo />} />
+        <Route path="/Eventi" element={<Eventi />} />
+        <Route path="/Festival" element={<Festival />} />
+        <Route path="/Tickets" element={<Biglietti />} />
+        <Route path="/Contatti" element={<Contatti />} />
       </Routes>
     </Router>
   );
