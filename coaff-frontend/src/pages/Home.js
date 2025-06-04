@@ -9,11 +9,11 @@ const Home = () => {
       <div className="overlay">
         <nav className="navbar">
           <ul className="nav-list">
-            <li><Link to="/chi-siamo">CHI SIAMO</Link></li>
-            <li><Link to="/eventi">EVENTI</Link></li>
-            <li><Link to="/festival">FESTIVAL</Link></li>
+            <li><Link to="/ChiSiamo">CHI SIAMO</Link></li>
+            <li><Link to="/Eventi">EVENTI</Link></li>
+            <li><Link to="/Festival">FESTIVAL</Link></li>
             <li><Link to="/Tickets">BIGLIETTI</Link></li> {/* ← QUI */}
-            <li><Link to="/contatti">CONTATTI</Link></li>
+            <li><Link to="/Contatti">CONTATTI</Link></li>
           </ul>
         </nav>
         <div className="hero-text">

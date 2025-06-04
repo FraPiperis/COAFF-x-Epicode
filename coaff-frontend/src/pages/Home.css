@@ -1,1 +1,71 @@
 /* src/pages/Home.css */
+.home-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url('C:\Users\francesca\OneDrive\Desktop\COAFF x Epicode\coaff-frontend\src\pexels-cottonbro-7222578.jpg'); 
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3); /* leggera sovrapposizione per leggibilità del testo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.nav-list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+  color: #ffd700;
+}
+
+.hero-text {
+  text-align: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.hero-text h1 {
+  font-size: 64px;
+  margin: 0;
+}
+
+.hero-text h2 {
+  font-size: 20px;
+  margin: 0;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}

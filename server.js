@@ -4,6 +4,9 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const Stripe = require('stripe');
 
+const paymentRoutes = require('./routes/paymentRoutes');
+app.use('/api/payments', paymentRoutes);
+
 dotenv.config();
 
 const app = express();
